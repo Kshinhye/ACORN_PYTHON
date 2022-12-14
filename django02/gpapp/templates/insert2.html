@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert2 title here</title>
+</head>
+<body>
+<h2>자료입력</h2>
+<form action="/gptest/insert2" method="post">{% csrf_token %}
+	이름: <input type="text" name="name"/>
+	<input type="submit" value="확인" />
+</form>
+</body>
+</html>

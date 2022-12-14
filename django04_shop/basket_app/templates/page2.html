@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>page2</title>
+<script type="text/javascript">
+	window.onload=function(){
+		document.querySelector("#btnOk").onclick=function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<img src="/static/images/pic2.jpg" style="width:80%" />
+		</td>
+		<td>
+			<pre>
+반스 클래식 올드스쿨 스니커즈 VN000D3HY28
+48,900원
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="cart" name="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="반스" />
+				<input type="hidden" name="price" value="48900" />
+				<input type="button" id="btnOk" value="장바구니에 담기" />
+				<input type="button" value="홈으로" onclick="history.back()"/>
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

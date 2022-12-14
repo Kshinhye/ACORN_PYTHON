@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list</title>
+<script type="text/javascript">
+let xhr;
+
+window.onload = function(){
+   document.querySelector("#btnOk1").onclick = function(){
+      xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+         if(xhr.readyState === XMLHttpRequest.DONE){
+            if(xhr.status === 200){
+               process1();
+            }
+         }
+      }
+      url = "calldb1";
+      xhr.open("GET","calldb1",true);
+      xhr.send();
+   }
+   document.querySelector("#btnOk2").onclick = function(){
+      const url = "calldb2";
+      
+      fetch(url).then(res =>{ // res 얘가 가지고 있다.
+         if(res.status === 200){
+            return res.json();
+         }else{
+            console.error(`HTTP 에러여~~  status:$(res.status)`);
+         }
+      })
+      .then(jsonData =>{
+         process2(jsonData);
+      })
+      .catch(err =>{
+         console.error(err);
+      });
+   }
+}
+function process1(){
+   let parseData = JSON.parse(xhr.responseText);
+   // alert(parseData)
+   let str = "<table border='1'>";
+   str += "<tr><th>코드</th><th>품명</th><th>수량</th><th>단가</th></tr>"
+   let count = 0;
+   for(let i=0; i < parseData.length; i++){
+      str +="<tr>";
+      str +="<td>" + parseData[i].code + "</td>";
+      str +="<td>" + parseData[i].sang + "</td>";
+      str +="<td>" + parseData[i].su + "</td>";
+      str +="<td>" + parseData[i].dan + "</td>";
+      str +="</tr>";
+      count++;
+   }
+   str += "</table>";
+   document.querySelector("#showData1").innerHTML = str;
+}
+
+function process2(jsonData){
+   let str = "<table border='1'>";
+   str += "<tr><th>코드</th><th>품명</th><th>수량</th><th>단가</th></tr>";
+   let count = 0;
+   
+   for(let i=0; i < jsonData.length; i++){
+      str +="<tr>";
+      str +="<td>" + jsonData[i].code + "</td>";
+      str +="<td>" + jsonData[i].sang + "</td>";
+      str +="<td>" + jsonData[i].su + "</td>";
+      str +="<td>" + jsonData[i].dan + "</td>";
+      str +="</tr>";
+      count++;
+   }
+   str += "</table>";
+   
+   document.querySelector("#showData2").innerHTML = str;
+}
+
+</script>
+</head>
+<body>
+Ajax 연습 : 원격 DB 자료 보기<p/>
+
+<button id="btnOk1">상품자료 출력 1</button>
+<br />
+<div id="showData1"></div>
+<hr />
+<button id="btnOk2">상품자료 출력 2</button>
+<br />
+<div id="showData2"></div>
+<hr />
+<br />
+</body>
+</html>

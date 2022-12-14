@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insert.html</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+<script type="text/javascript">
+window.onload = function(){
+	document.querySelector("#btnOk").onclick=chkFunc;
+}
+function chkFunc(){
+	//alert('a');
+	if(frm.name.value === ""){
+		alert('작성자를 입력하이소')
+		frm.name.focus();
+		return;
+	}
+	frm.submit();
+}
+</script>
+</head>
+<body>
+<div class="container mt-5">
+<h2 class="text-center">새 글 입력</h2>
+<form action="/board/insertok" name="frm" method="post">{% csrf_token %}
+	<div class="mb-3">
+		<label for="name">작성자</label>
+		<input type="text" name="name" class="form-control"/>
+	</div>
+	<div class="mb-3">
+		<label for="passwd">비밀번호</label>
+		<input type="text" name="passwd" class="form-control"/>
+	</div>
+	<div class="mb-3">
+		<label for="mail">이메일</label>
+		<input type="email" name="mail" class="form-control"/>
+	</div>
+	<div class="mb-3">
+		<label for="title">글제목</label>
+		<input type="text" name="title" class="form-control"/>
+	</div>
+	<div class="mb-3">
+		<label for="cont">글내용</label>
+		<textarea name="cont" cols="30" rows="10" class="form-control"></textarea>
+	</div>
+	<input type="button" value="등 록" id="btnOk" class="btn btn-secondary mt-3"/>
+</form>
+</div>
+</body>
+</html>

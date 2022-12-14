@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+<h2>글 내용</h2>
+<a href="insert" class="btn btn-secondary" >자료추가</a>
+<table class="table">
+	<tr><th>아이디</th><th>제목</th><th>내용</th><th>등록일</th></tr>
+	{% if gdatas %}
+	{% for g in gdatas %}
+	<tr>
+		<td>{{g.id}}</td>
+		<td>{{g.title}}</td>
+		<td>{{g.content}}</td>
+		<td>{{g.regdate}}</td>\
+	</tr>
+	{% endfor %}
+	{% else %}
+	<tr>
+		<td colspan="4">글이 없어요</td>
+	</tr>
+	{% endif %}
+</table>
+</body>
+</html>

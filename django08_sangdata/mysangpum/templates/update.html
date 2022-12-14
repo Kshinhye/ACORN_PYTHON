@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>👻상품 수정👻</h2>
+<form action="/sangpum/updateok" method="post">{% csrf_token %} <!-- post방식으로 넘기기때문에 토큰사용 -->
+<input type="hidden" name="code" value="{{sang_one.code}}" /> <!-- 코드번호도 히든으로 같이 넘긴다. -->
+<table style="width:80%">
+   <tr>
+      <td>코드 : </td>
+      <td>{{sang_one.code}}</td>
+   </tr>
+   <tr>
+      <td>품명 : </td>
+      <td><input type="text" name="sang" value="{{sang_one.sang}}" /></td>
+   </tr>
+   <tr>
+      <td>수량 : </td>
+      <td><input type="text" name="su" value="{{sang_one.su}}" /></td>
+   </tr>
+   <tr>
+      <td>단가 : </td>
+      <td><input type="text" name="dan" value="{{sang_one.dan}}" /></td>
+   </tr>
+   <tr>
+      <td colspan="2">
+         <input type="submit" value="수정하기"/>
+         <input type="button" value="이전화면" onclick="history.back()" />
+      </td>
+   </tr>
+</table>
+</form>
+</body>
+</html>

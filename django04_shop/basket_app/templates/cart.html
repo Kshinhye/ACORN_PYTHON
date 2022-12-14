@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>cart.html</title>
+</head>
+<body>
+<h1>**장바구니 목록**</h1>
+<table>
+	<tr><th>상품명</th><th>가격</th></tr>
+	{% if products %}
+	{% for p in products %}
+	<tr>
+		<td>{{p.name}}</td>
+		<td>{{p.price}}</td>
+	</tr>
+	{% endfor %}
+	{% else %}
+	<tr>
+		<td copspan="2">담은 물건이 없습니다.</td>
+	</tr>
+	{% endif %}
+</table>
+<br />
+<a href="buy">결제하기</a>
+<a href="/">메인으로 돌아가기</a>
+</body>
+</html>

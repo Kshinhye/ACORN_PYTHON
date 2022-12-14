@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>show.html</title>
+</head>
+<body>
+<p>session test</p>
+<h2>세센결과</h2> <!-- 5초동안만 살아있고 그 후 새로고침하면 없다 -->
+<h1><mark>{{sel_os}}</mark></h1>
+<h3>{{message}}</h3>
+<hr />
+<p>세션값 직접 보기: <mark>{{request.session.f_os}}</mark></p>
+<p>현재 사용자에게 할당된 세션 id : <mark>{{request.session.session_key}}</mark></p>
+<a href="setos">os 다시 선택하기</a>
+<a href="/">메인으로 돌아가기</a>
+</body>
+</html>

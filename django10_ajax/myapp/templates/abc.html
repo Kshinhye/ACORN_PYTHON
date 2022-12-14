@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>abc.html</title>
+<script type="text/javascript">
+let xhr;
+
+window.onload =function(){
+	document.querySelector("#btn1").addEventListener("click",()=>{
+		//alert('a');
+		//XmlHttpRequest 객체로 웹서버와 통신
+		xhr = new XMLHttpRequest();
+		//console.log(xhr);
+		xhr.onreadystatechange = function(){
+			//alert(xhr.readyState); //readyState 은 0~4 값을 받는다.
+			 //xhr.readyState === XMLHttpRequest.DONE 도 가능! (무사히 잘 나왔다 통신상태 이상이 없다는 상태)
+			if (xhr.readyState === 4){
+				//alert(xhr.status) //500 요청하고 있는 서버에서 에러가 떨어졌다는 얘기 403은 권한의 문제가있다 등등 200이 정상!
+				//통신상태가 양호하고 내가 요청한 파일에 이상이없다!!=200 그럼 이제 데이터를 연결받자.
+				if(xhr.status === 200){
+					//console.log(xhr.response);
+					process1();
+				}
+			}
+		}
+		url="startajax?msg=" + document.querySelector("#txtMsg").value;
+		xhr.open("GET",url,false); //true면 비동기 false 동기 (synchronized )
+		xhr.send();
+	});
+	
+	document.querySelector("#btn2").onclick=function(){
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if (xhr.readyState === XMLHttpRequest.DONE){
+				if(xhr.status === 200){
+					process2();
+				}
+			}
+		}
+		xhr.open("GET","goajax",true);
+		xhr.send(); //실제 요청 시작
+	}
+}
+
+function process1(){
+	//alert(xhr.responseText);
+	//제이쓴타입을 오브젝타입으로 바꿀게요~
+	let parseData = JSON.parse(xhr.responseText);
+	document.querySelector("#showData1").innerText = xhr.responseText;
+}
+
+function process2(){
+	//alert(xhr.responseText);
+	let parseData2 = JSON.parse(xhr.responseText);
+	let str="";
+	for(let i=0; i< parseData2.length; i++){
+		str += parseData2[i].irum + "" + parseData2[i].nai + "<br>";
+	}
+	document.querySelector("#showData2").innerHTML=str;
+}
+</script>
+</head>
+<body>
+<h2>Ajax 연습</h2>
+<textarea id="" cols="30" rows="5"></textarea><br />
+<label for="">자료입력</label>
+<input type="text" id="txtMsg" value="korea" />
+<button id="btn1">Ajax test1</button><br />
+<div id="showData1"></div>
+<hr />
+<button id="btn2">Ajax test2</button><br />
+<div id="showData2"></div>
+</body>
+</html>

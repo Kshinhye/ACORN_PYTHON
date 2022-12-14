@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		margin:80px;
+	}
+	table {
+	  border: 1px solid #444444;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  border: 1px solid #444444;
+	  padding: 10px;
+	  text-align: center;
+	}
+	.btn{
+	    background-color:#f5f5dc;
+	    border:none;
+	    border-radius:10px;
+	    height:30px;
+	}
+	a{
+	    text-decoration:none;
+	}
+	input {
+	  width: 180px;
+	  height: 36px;
+	  border: 0;
+	  border-radius: 15px;
+	  outline: none;
+	  padding-left: 10px;
+	  background-color: rgb(233, 233, 233);
+	}
+	button {
+	  border: none;
+	  color: white;
+	  padding: 5px 10px;
+	  border-radius: 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  background-color: #555555;;
+	}
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+function sendAjax(){
+/* 	serialize(): sform 데이터를 json 형식으로 바꿔준것 */
+	let data = $("#sform").serialize();
+	$.ajax({
+	   url:"calldb",
+	   type:"post",
+	   data:data,
+	   dataType:"json",
+	   success:function(data){
+		//alert(data.dic_javg)
+		let str = "<table>";
+		str +="<tr>";
+		str +="<td> 예상 연봉액: </td>";
+		str +="<td>"+ data.new_pred+ "</td>";
+		str +="</tr>";
+		str +="<tr>";
+		str +="<td> 설명력 : </td>";
+		str +="<td>"+ data.rscore+"%"+"</td>";
+		str +="</tr>";
+		str += "</table><br />";
+		str += data.javg
+		document.querySelector("#showData1").innerHTML = str;
+	   }
+	});
+}
+</script>
+</head>
+<body>
+<p>🐜🐜일개미의 예측연봉은?🐜🐜</p>
+<form id='sform' method="post">{% csrf_token %}
+   <label for="year" style="display:none;">근무년수</label>
+   <input type="text" id="year" name='year' placeholder="근무년수를 입력해주세요.."/>
+   <button type="button" onclick="sendAjax()">확인</button>
+</form><br />
+<div id="showData1"></div>
+</body>
+</html>

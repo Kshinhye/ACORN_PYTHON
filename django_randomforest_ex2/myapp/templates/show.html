@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>show</title>
+<style>
+	body{
+		margin:80px;
+	}
+	table {
+	  border: 1px solid #444444;
+	  border-collapse: collapse;
+      margin-left:auto; 
+      margin-right:auto;
+	}
+	th, td {
+	  border: 1px solid #444444;
+	  padding: 10px;
+	  text-align: center;
+	}
+	input {
+	  width: 180px;
+	  height: 36px;
+	  border: 0;
+	  border-radius: 15px;
+	  outline: none;
+	  padding-left: 10px;
+	  background-color: rgb(233, 233, 233);
+	}
+	button {
+	  border: none;
+	  color: white;
+	  padding: 5px 10px;
+	  border-radius: 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  background-color: #555555;
+	}
+	div{
+		margin: 10px;
+	}
+</style>
+</head>
+<body>
+<h2>입원 환자 데이터를 입력해 생사 여부 확인을 위한 자료 입력</h2>
+<br />
+<br />
+<div>
+	<p>STA : 환자 생사 여부 (0:생존, 1:사망)</p>
+	<p>AGE : 나이</p>
+	<p>SEX : 성별</p>
+	<p>RACE : 인종</p>
+	<p>SER : 중환자 치료실에서 받은 치료</p>
+	<p>CAN : 암 존재 여부</p>
+	<p>INF : 중환자 치료실에서의 감염 여부</p>
+	<p>CPR : 중환자 치료실 도착 전 CPR여부</p>
+	<p>HRA : 중환자 치료실에서의 심박수</p>
+</div>
+<div>
+	<form action="list" method="post">{% csrf_token %}
+		<div>
+			<label>AGE</label>
+			<input type="text" name="age" />
+		</div>
+		<div>
+			<label>SEX</label>
+			<input type="text" name="sex" />
+		</div>
+		<div>
+			<label>RACE</label>
+			<input type="text" name="race" />
+		</div>
+		<div>
+			<label>SER</label>
+			<input type="text" name="ser" />
+		</div>
+		<div>
+			<th>CAN</th>
+			<input type="text" name="can" />
+		</div>
+		<div>
+			<th>INF</th>
+			<input type="text" name="inf" />
+		</div>
+		<div>
+			<label>CPR</label>
+			<input type="text" name="cpr" />
+		</div>
+		<div>
+			<label>HRA</label>
+			<input type="text" name="hra" />
+		</div>
+		<div>
+			<button>확인</button>
+		</div>
+	</form>
+</div>
+</body>
+</html>

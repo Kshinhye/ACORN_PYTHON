@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list1.html</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+<h2>제조사목록</h2>
+<table class="table">
+	<tr><th>코드</th><th>제조사명</th><th>전화</th><th>주소</th></tr>
+	{% for m in makers %}
+	<tr>
+		<td>{{m.id}}</td>
+		<td><a href="list3?id={{m.id}}">{{m.mname}}</a></td>
+		<td>{{m.tel}}</td>
+		<td>{{m.addr}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>

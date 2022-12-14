@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+</head>
+<body>
+<h1>시각화</h1>
+<img src="./static/images/jik.png" alt="직급별 연봉 합/평균" />
+<hr />
+
+<h1>직급별 성별 인원수(빈도수)</h1>
+{{ctab|safe}}
+<hr />
+
+<h1>직급별 연봉 합/평균</h1>
+{{jik_group_detail|safe}}
+<hr />
+
+<h1>직급별 엽봉합</h1>
+과장: {{jik_group.sum.과장}} <br />
+대리: {{jik_group.sum.대리}} <br />
+사원: {{jik_group.sum.사원}} <br />
+<hr />
+
+<h1>직원자료</h1>
+{% if datas %}
+{{datas|safe}}
+{% endif %}
+</body>
+</html>

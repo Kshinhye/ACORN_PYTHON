@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>main</title>
+<style>
+	body{
+		margin:80px;
+		text-align: center;
+	}
+	table {
+		border: 1px solid #444444;
+		border-collapse: collapse;
+		   margin-left:auto; 
+		   margin-right:auto;
+	}
+	th, td {
+		border: 1px solid #444444;
+		padding: 10px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+<h1>중환자 치료실에 입원 지료 받은 환자 생사여부 분류 모델</h1>
+분류모델의 정확도: {{model_acc}}
+<br />
+<p> [ patient 데이터 일부보기 ]</p>
+{{df2|safe}}
+<br />
+<a href="/show">입원환자 데이터를 입력해 생사여부 확인하기</a>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insert.html</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+<script type="text/javascript">
+window.onload=function(){
+	document.getElementById("btnOk").onclick=confirmFunc;
+	document.querySelector("#btnShow").onclick=function(){
+		//alert('목록보기');
+		document.location.href="/guest/select";
+	};
+}
+function confirmFunc(){
+	//alert('등록하기');
+	if (frm.title.value === ""){ //==는 속도가 떨어진다
+		frm.title.placeholder="제목을 입력하세요"
+		return false;
+	}
+	frm.submit()
+}
+</script>
+</head>
+<body>
+<h2>방명록 글쓰기</h2>
+<form action="/guest/insertok" method="post" name="frm">{% csrf_token %}
+<!--  onsubmit="return false" 을쓰면 엔터를 쳐도 안넘어간다. 이벤트를 막을 수 있따. -->
+	<table class="table">
+		<tr>
+			<td>제 목: </td>
+			<td><input class="form-control" type="text" name="title" size="48"/></td>
+		</tr>
+		<tr>
+			<td>내 용: </td>
+			<td>
+				<textarea class="form-control" name="content" cols="50" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" >
+				<input class="btn btn-secondary" type="button" id="btnOk" value="등록하기"/>
+				<input class="btn btn-secondary" type="button" id="btnShow" value="목록가기"/>
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

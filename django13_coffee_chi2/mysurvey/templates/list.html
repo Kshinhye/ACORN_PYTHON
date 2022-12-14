@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+<style>
+	table {
+	  border: 1px solid #444444;
+	  border-collapse: collapse;
+	}
+	th, td {
+	  border: 1px solid #444444;
+	  padding: 10px;
+	  text-align: center;
+	}
+	.btn{
+	    background-color:#f5f5dc;
+	    border:none;
+	    border-radius:10px;
+	    height:30px;
+	}
+	a{
+	    text-decoration:none;
+	}	
+</style>
+</head>
+<body>
+<h1>커피전문점에 대한 소비자 인식조사 결과</h1>
+<button class="btn"><a href="http://127.0.0.1/">홈페이지 이동</a></button>
+<button class="btn"><a href="coffee/survey">설문조사 재참여</a></button><br />
+<img src="/static/images/coffee.png" width="500" alt="" />
+{% if ctab %}
+{{ctab|safe}}
+{% endif %}
+<br />
+{% if result %}
+{{result|safe}}
+{% endif %}
+<br />
+분석에 사용된 관찰값 수: {{count}}
+<br />
+<img src="https://dispatch.cdnser.be/cms-content/uploads/2021/06/15/a7dbe08c-0129-4180-bc7c-b73b6da4b474.jpg" alt="" style="width:500px"/>
+<br />
+</body>
+</html>

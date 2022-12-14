@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container m-5" >
+	<h2>담당직원정보</h2>
+	<br />
+	{% if dk_data.jikwon_gen == '남' %}
+	<img src="/static/images/man.png" style="width:10%"/>
+	{% elif dk_data.jikwon_gen == '여' %}
+	<img src="/static/images/woman.png" style="width:10%"/>
+	{% endif %}
+	<br/><br/>
+	<table class="table w-25">
+		<tr>
+			<td >담당 직원명</td><td>{{dk_data.jikwon_name}}</td>
+		</tr>
+		<tr>
+			<td>직급</td><td>{{dk_data.jikwon_jik}}</td>
+		</tr>
+		<tr>
+			<td>평점</td><td>{{jrating}}</td>
+		</tr>
+		<tr>
+			<td>근무년수</td><td>{{year}}년</td>
+		</tr>
+		<tr>
+			<td>부서명</td><td>{{bno.buser_name}}</td>
+		</tr>
+		<tr>
+			<td>부선전화번호</td><td>{{bno.buser_tel}}</td>
+		</tr>
+	</table>
+	<br />
+	<a href="/" class="btn btn-info">다시 검색</a>
+</div>
+</body>
+</html>

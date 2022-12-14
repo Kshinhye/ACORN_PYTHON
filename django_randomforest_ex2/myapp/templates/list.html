@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+<style>
+	body{
+		margin:80px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+{% if pred == 0 %}
+<h1>생존</h1>
+{% else %}
+<h1>사망</h1>
+{% endif %}
+<small>예측 결과값:{{pred}}</small>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>page1</title>
+<script type="text/javascript">
+	window.onload=function(){
+		document.querySelector("#btnOk").onclick=function(){
+			frm.submit();
+		}
+	}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td>
+			<img src="/static/images/pic1.jpg" style="width:80%" />
+		</td>
+		<td>
+			<pre>
+남여 플리스 자켓 C34-WE3220
+42,500원
+할인율30%
+할인가29,750원
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="cart" name="frm" method="post">{% csrf_token %}
+				<input type="hidden" name="name" value="플리스" />
+				<input type="hidden" name="price" value="29750" />
+				<input type="button" id="btnOk" value="장바구니에 담기" />
+				<input type="button" value="홈으로" onclick="history.back()"/>
+			</form>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
